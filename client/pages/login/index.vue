@@ -3,7 +3,7 @@
     <b-card no-body class="col-md-11" title="Regist">
         <b-card-body class="p-4 m-4">
             <b-form >
-              <h1>LOGIN</h1>
+              <h1 align="center">LOGIN</h1>
                 <div style="padding-bottom: 2%;">
                     <label class="input_label">Email</label>
                     <input type="text"
