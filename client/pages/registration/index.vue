@@ -1,140 +1,138 @@
 <template>
 <div class="d-flex justify-content-center h-100">
-    <b-card no-body class="col-md-11" title="Regist">
+    <b-card no-body class="col-md-11" title="Regist" style="height:100%">
         <b-card-body class="p-4 m-4">
             <form method="post" @submit.prevent="register">
               <h1 align="center">REGISTER</h1>
-                  <div style="padding-bottom: 2%;">
-                    <label class="input_label">Email</label>
-                    <input type="email"
-                        class="form-control"
-                        v-model="email"
+              <div style="padding-bottom: 2%;">
+                <label class="input_label">Email</label>
+                <input type="email"
+                    class="form-control"
+                    v-model="email"
+                    required
+                    placeholder="Masukkan alamat email">
+              </div>
+
+              <div style="padding-bottom: 2%;">
+                <label class="input_label">Username</label>
+                    <div v-if="username === ''">
+                        <b-input v-model="username"
+                        placeholder="Masukkan username"
                         required
-                        placeholder="Masukkan alamat email">
-                  </div>
-
-                  <div style="padding-bottom: 2%;">
-                    <label class="input_label">Username</label>
-                        <div v-if="username === ''">
-                            <b-input v-model="username"
-                            placeholder="Masukkan username"
-                            required
-                            id="feedback-user" />
-                        </div>
-                        <div v-else>
-                            <b-input v-model="username"
-                            placeholder="Masukkan username"
-                            :state="validation"
-                            required
-                            id="feedback-user" />
-                          <b-form-invalid-feedback :state="validation">
-                              Your user ID must be 6-12 characters long.
-                          </b-form-invalid-feedback>
-                          <b-form-valid-feedback :state="validation">
-                              Looks Good.
-                          </b-form-valid-feedback>
-                        </div>
-                  </div>
-
-                <div style="padding-bottom: 2%;">
-                    <label class="input_label">Password</label>
-                    <b-form-group
-                      id="fieldset-1"
-                      label-for="input-1"
-                      :invalid-feedback="invalidFeedback"
-                      :valid-feedback="validFeedback"
-                      :state="state">
-                      <b-form-input 
-                        type="password" 
-                        id="input-1" 
-                        v-model="pass" 
-                        :state="state" 
-                        placeholder="Masukkan password"
-                        required>
-                        </b-form-input>
-                    </b-form-group>
-                </div>
-
-                <div style="padding-bottom: 2%;">
-                    <label class="input_label">Nama Pertama</label>
-                    <input type="text"
-                        class="form-control"
-                        v-model="first_name"
+                        id="feedback-user" />
+                    </div>
+                    <div v-else>
+                        <b-input v-model="username"
+                        placeholder="Masukkan username"
+                        :state="validation"
                         required
-                        placeholder="Masukkan nama lengkap"/>
-                </div>
+                        id="feedback-user" />
+                      <b-form-invalid-feedback :state="validation">
+                          Your user ID must be 6-12 characters long.
+                      </b-form-invalid-feedback>
+                      <b-form-valid-feedback :state="validation">
+                          Looks Good.
+                      </b-form-valid-feedback>
+                    </div>
+              </div>
 
-                <div style="padding-bottom: 2%;">
-                    <label class="input_label">Nama Keluarga</label>
-                    <input type="text"
-                        class="form-control"
-                        v-model="last_name"
-                        required
-                        placeholder="Masukkan nama lengkap"/>
-                </div>
+              <div style="padding-bottom: 2%;">
+                  <label class="input_label">Password</label>
+                  <b-form-group
+                    id="fieldset-1"
+                    label-for="input-1"
+                    :invalid-feedback="invalidFeedback"
+                    :valid-feedback="validFeedback"
+                    :state="state">
+                    <b-form-input 
+                      type="password" 
+                      id="input-1" 
+                      v-model="pass" 
+                      :state="state" 
+                      placeholder="Masukkan password"
+                      required>
+                      </b-form-input>
+                  </b-form-group>
+              </div>
 
-                <div style="padding-bottom: 2%;">
-                    <label class="input_label">Alamat</label>
-                    <input type="text"
-                        class="form-control"
-                        required
-                        v-model="address"
-                        placeholder="Masukkan alamat"/>
-                </div>
-
-                <div style="padding-bottom: 2%;">
-                    <label class="input_label">Peran</label>
-                    <b-form-select
-                      v-model="role"
-                      :options="roles"
+              <div style="padding-bottom: 2%;">
+                  <label class="input_label">Nama Pertama</label>
+                  <input type="text"
+                      class="form-control"
+                      v-model="first_name"
                       required
-                    ></b-form-select>
-                </div>
+                      placeholder="Masukkan nama lengkap"/>
+              </div>
 
-                <div style="padding-bottom: 2%;">
-                    <label class="input_label">Nomor Telepon</label>
-                    <div class="input-group form-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-primary inverse">+62</span>
-                    </div>
-                    <input type="number"
-                        class="form-control"
-                        v-model="phone_number"
-                        placeholder="8123456789"/>
-                    </div>
-                </div>
+              <div style="padding-bottom: 2%;">
+                  <label class="input_label">Nama Keluarga</label>
+                  <input type="text"
+                      class="form-control"
+                      v-model="last_name"
+                      required
+                      placeholder="Masukkan nama lengkap"/>
+              </div>
 
-                <div style="padding-bottom: 2%;">
-                    <label class="input_label">Tanggal Lahir</label>
-                    <input type="date"
-                        class="form-control"
-                        v-model="birthdate"/>
-                </div>
+              <div style="padding-bottom: 2%;">
+                  <label class="input_label">Alamat</label>
+                  <input type="text"
+                      class="form-control"
+                      required
+                      v-model="address"
+                      placeholder="Masukkan alamat"/>
+              </div>
 
-                <div style="padding-bottom: 2%;">
-                    <label class="input_label">Foto KTP</label>
-                <b-form-group>
-                  <b-form-file id="file-default" required></b-form-file>
-                </b-form-group>
-                </div>
+              <div style="padding-bottom: 2%;">
+                  <label class="input_label">Peran</label>
+                  <b-form-select
+                    v-model="role"
+                    :options="roles"
+                    required
+                  ></b-form-select>
+              </div>
 
-                <center>
-                  <div class="form-group">
-                    <b-button type="submit" class="btn-lg btn-primary" style="position: absolute;" v-b-modal.modal-center>Register</b-button>
-                      <!-- <b-button v-b-modal.modal-center
-                          @click="addCustomer()"
-                          class="btn-lg btn-primary"
-                          style="position: absolute;">
-                          Register
-                      </b-button> -->
+              <div style="padding-bottom: 2%;">
+                  <label class="input_label">Nomor Telepon</label>
+                  <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text bg-primary inverse">+62</span>
                   </div>
-                </center>
-                <!-- modal -->
-                <b-modal id="modal-center"
-                    centered
-                    title="Attention">
-                    <p class="my-4">OTP code has been sent to your phone number</p>
-                </b-modal>
+                  <input type="number"
+                      class="form-control"
+                      v-model="phone_number"
+                      placeholder="8123456789"/>
+                  </div>
+              </div>
+
+              <div style="padding-bottom: 2%;">
+                  <label class="input_label">Tanggal Lahir</label>
+                  <input type="date"
+                      class="form-control"
+                      v-model="birthdate"/>
+              </div>
+
+              <div style="padding-bottom: 2%;">
+                  <label class="input_label">Foto KTP</label>
+              <b-form-group>
+                <b-form-file id="file-default" required></b-form-file>
+              </b-form-group>
+              </div>
+
+              <center>
+                <div class="form-group">
+                  <!-- <b-button type="submit" class="btn-lg btn-primary" style="position: absolute;" v-b-modal.modal-center>Register</b-button> -->
+                    <input type="submit"
+                        value="Register"
+                        class="btn-lg btn-primary"
+                        style="position: absolute;"/>
+                </div>
+              </center>
+              <!-- modal -->
+              <b-modal id="modal-center"
+                  centered
+                  title="Attention">
+                  <p class="my-4">OTP code has been sent to your phone number</p>
+              </b-modal>
             </form>
         </b-card-body>
     </b-card>
@@ -185,7 +183,7 @@ export default {
   data() {
       return {
         role: 2,
-        username: 'aaaaaaaaa',
+        username: 'XYZ',
         pass:'AFDFSFS!aaa24234',
         email: 'aa@aa.com',
         first_name: 'Abcascas',
