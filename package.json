@@ -65,7 +65,7 @@
     "nedb": "^1.8.0",
     "node-sass": "^4.12.0",
     "normalize.css": "^8.0.1",
-    "nuxt": "^2.10.0",
+    "nuxt": "^2.18.1",
     "nuxt-fontawesome": "^0.4.0",
     "perfect-scrollbar": "^1.4.0",
     "sass-loader": "^7.1.0",
@@ -92,8 +92,8 @@
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "eslint": "^5.13.0",
-    "mocha": "^6.0.2",
+    "eslint": "^9.39.1",
+    "mocha": "^11.7.5",
     "nodemon": "^1.18.10",
     "request": "^2.88.0",
     "request-promise": "^4.2.2"
